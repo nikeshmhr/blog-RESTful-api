@@ -1,0 +1,8 @@
+/profiles
+/profiles/{profileId}
+
+/profiles/{profileId}/posts
+/profiles/{profileId}/posts/{postId}
+
+/profiles/{profileId}/posts/{postId}/comments
+/profiles/{profileId}/posts/{postId}/comments/{commentId}
