@@ -1,6 +1,7 @@
 package com.nikesh.restapi.blog.model;
 
-import java.sql.Date;
+import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;

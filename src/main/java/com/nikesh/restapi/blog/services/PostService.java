@@ -5,7 +5,7 @@
  */
 package com.nikesh.restapi.blog.services;
 
-import com.nikesh.restapi.blog.dao.DatabaseObject;
+import com.nikesh.restapi.blog.dao.PostDAO;
 import com.nikesh.restapi.blog.model.Post;
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class PostService {    
     
-    public DatabaseObject dao = new DatabaseObject();
+    public PostDAO dao = new PostDAO();
     
     public List<Post> getPosts(int profileId){
         return dao.getPosts(profileId);

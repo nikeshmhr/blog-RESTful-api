@@ -1,14 +1,13 @@
 package com.nikesh.restapi.blog.services;
 
-import com.nikesh.restapi.blog.dao.DatabaseObject;
+import com.nikesh.restapi.blog.dao.ProfileDAO;
 import java.util.List;
 
 import com.nikesh.restapi.blog.model.Profile;
-import java.sql.Date;
 
 public class ProfileService {
 
-    public DatabaseObject dao = new DatabaseObject();
+    public ProfileDAO dao = new ProfileDAO();
 
     public List<Profile> getProfiles() {
         return dao.getProfiles();
