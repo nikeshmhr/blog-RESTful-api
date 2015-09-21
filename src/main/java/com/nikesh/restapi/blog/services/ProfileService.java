@@ -22,4 +22,12 @@ public class ProfileService {
         profile.setProfileId(profileId);
         return dao.addProfile(profile);
     }
+    
+    public Profile updateProfile(Profile profile){
+        return dao.updateProfile(profile);
+    }
+    
+    public Profile deleteProfile(int profileId){
+        return dao.deleteProfile(profileId);
+    }
 }

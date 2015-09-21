@@ -78,6 +78,38 @@ public class ProfileDAO {
         return profile;
     }
 
+    public Profile updateProfile(Profile profile) {
+        Profile old = getProfile(profile.getProfileId());
+        Profile updated = profile;
+        updated.setProfileId(old.getProfileId());
+        updated.setJoinedDate(old.getJoinedDate());
+        try{
+            preparedStatement = connection.prepareStatement("UPDATE profiles SET firstname=?, lastname=?, username=? WHERE profile_id=?");
+            preparedStatement.setString(1, updated.getFirstName());
+            preparedStatement.setString(2, updated.getLastName());
+            preparedStatement.setString(3, updated.getUserName());
+            preparedStatement.setInt(4, updated.getProfileId());
+            
+            preparedStatement.executeUpdate();
+        }catch (SQLException ex){
+            profile = null;
+        }
+        return updated;
+    }
+    
+    public Profile deleteProfile(int profileId){
+        Profile p = getProfile(profileId);
+        
+        try{
+            preparedStatement = connection.prepareStatement("DELETE FROM profiles WHERE profile_id=?");
+            preparedStatement.setInt(1, profileId);
+            preparedStatement.executeUpdate();
+        }catch(SQLException ex){
+            p = null;
+        }
+        return p;
+    }
+
     public int getNumberOfProfiles() {
         int numOfProfiles = 0;
         try {

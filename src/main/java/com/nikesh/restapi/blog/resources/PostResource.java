@@ -19,22 +19,24 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Nikesh
  */
-@Path("/")
+//@Path("/") // Path annotation in subresource is optional
 @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+
 public class PostResource {
 
     private final PostService postService = new PostService();
 
     @GET
-    public List<Post> getPosts(@PathParam(value = "profileId") int profileId) {
+    public List<Post> getPosts(@PathParam("profileId") int profileId) {
         return postService.getPosts(profileId);
     }
 
     @GET
     @Path("/{postId}")
-    public Post test1(@PathParam(value = "postId") int postId, @PathParam(value = "profileId") int profileId) {
+    public Post getPost(@PathParam("postId") int postId, @PathParam("profileId") int profileId) {
         return postService.getPost(profileId, postId);
     }
+   
 
 }

@@ -2,6 +2,8 @@ package com.nikesh.restapi.blog.model;
 
 import java.util.Date;
 import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
