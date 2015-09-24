@@ -7,7 +7,7 @@ import com.nikesh.restapi.blog.model.Profile;
 
 public class ProfileService {
 
-    public ProfileDAO dao = new ProfileDAO();
+    private ProfileDAO dao = new ProfileDAO();
 
     public List<Profile> getProfiles() {
         return dao.getProfiles();

@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class PostService {    
     
-    public PostDAO dao = new PostDAO();
+    private PostDAO dao = new PostDAO();
     
     public List<Post> getPosts(int profileId){
         return dao.getPosts(profileId);
@@ -23,6 +23,14 @@ public class PostService {
     
     public Post getPost(int profileId, int postId){
         return dao.getPost(profileId, postId);
+    }
+    
+    public Post addPost(Post post, int profileId){
+        int id = dao.getNumberOfPosts() + 1;
+        System.out.println("ID OF THE POST " + id);
+        post.setPostId(id);
+        post.setProfileId(profileId);
+        return dao.addPost(post, profileId);
     }
     
 }

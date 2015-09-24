@@ -7,6 +7,7 @@ package com.nikesh.restapi.blog.dao;
 
 import com.nikesh.restapi.blog.model.Post;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -67,5 +68,36 @@ public class PostDAO {
         }
 
         return post;
+    }
+
+    public Post addPost(Post post, int profileId) {
+        try {
+            preparedStatement = connection.prepareStatement("INSERT INTO posts VALUES(?, ?, ?, ?, ?)");
+            preparedStatement.setInt(1, post.getPostId());
+            preparedStatement.setString(2, post.getPostTitle());
+            preparedStatement.setString(3, post.getPostContent());
+            preparedStatement.setDate(4, (Date) post.getPostCreated());
+            preparedStatement.setInt(5, profileId);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return post;
+    }
+
+    public int getNumberOfPosts() {
+        int numOfPosts = 0;
+        try {
+            preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM posts");
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                numOfPosts = resultSet.getInt(1);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return numOfPosts;
     }
 }
